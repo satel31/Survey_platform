@@ -8,7 +8,7 @@ NULLABLE = {'blank': True, 'null': True}
 class Survey(models.Model):
     survey_name = models.CharField(max_length=235, verbose_name='Survey name', unique=True)
     description = models.TextField(max_length=4_096, verbose_name='Survey description', **NULLABLE)
-    owner = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='User', **NULLABLE)
+    owner = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='User', **NULLABLE, related_name='surveys')
 
     def __str__(self):
         return f'{self.survey_name} by {self.owner}'
@@ -31,7 +31,7 @@ class Question(models.Model):
 
 
 class Choice(models.Model):
-    question = models.ForeignKey(Question, on_delete=models.CASCADE, verbose_name='Question')
+    question = models.ForeignKey(Question, on_delete=models.CASCADE, verbose_name='Question', related_name='choices')
     text = models.CharField(max_length=4_096, verbose_name='Text of the choice')
 
     def __str__(self):
@@ -40,7 +40,7 @@ class Choice(models.Model):
 
 class Answer(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='User', **NULLABLE)
-    question = models.ForeignKey(Question, on_delete=models.CASCADE, verbose_name='Question', )
+    question = models.ForeignKey(Question, on_delete=models.CASCADE, verbose_name='Question', related_name='user_answers')
     choice = models.ForeignKey(Choice, on_delete=models.CASCADE, verbose_name='User choice')
 
     def __str__(self):
@@ -52,7 +52,7 @@ class Answer(models.Model):
 
 
 class View(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='User', **NULLABLE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='User', **NULLABLE, related_name='views')
     survey = models.ForeignKey(Survey, on_delete=models.CASCADE, verbose_name='Survey')
 
     def __str__(self):
@@ -62,9 +62,13 @@ class View(models.Model):
         verbose_name = 'view'
         verbose_name_plural = 'views'
 
+
 class Like(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='User', **NULLABLE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='User', **NULLABLE,
+                             related_name='assessments')
     survey = models.ForeignKey(Survey, on_delete=models.CASCADE, verbose_name='Survey')
+    like = models.BooleanField(default=False, verbose_name='Like')
+    dislike = models.BooleanField(default=False, verbose_name='Dislike')
 
     def __str__(self):
         return f'Like of {self.user}, survey: {self.survey}'

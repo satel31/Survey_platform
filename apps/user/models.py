@@ -5,6 +5,7 @@ NULLABLE = {'blank': True, 'null': True}
 
 
 class User(AbstractUser):
+    """Модель пользователя"""
     username = None
     first_name = models.CharField(max_length=235, verbose_name='Name', **NULLABLE)
     last_name = models.CharField(max_length=235, verbose_name='Last name', **NULLABLE)

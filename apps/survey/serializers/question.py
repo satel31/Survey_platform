@@ -6,6 +6,7 @@ from apps.survey.serializers.choice import ChoiceSerializer
 
 
 class QuestionSerializer(serializers.ModelSerializer):
+    """Сериализатор для вопроса (с вариантами ответа)"""
     choices = ChoiceSerializer(read_only=True, many=True)
 
     class Meta:
@@ -14,6 +15,7 @@ class QuestionSerializer(serializers.ModelSerializer):
 
 
 class QuestionWithAnswerSerializer(serializers.ModelSerializer):
+    """Сериализатор для вопроса (с вариантами ответа и ответом пользователя)"""
     choices = ChoiceSerializer(read_only=True, many=True)
     user_answers = AnswerSerializer(read_only=True, many=True)
 

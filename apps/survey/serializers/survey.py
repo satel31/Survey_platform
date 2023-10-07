@@ -5,6 +5,7 @@ from apps.survey.serializers.question import QuestionSerializer
 
 
 class SurveySerializer(serializers.ModelSerializer):
+    """Сериализатор для опроса (с количеством вопросов и вопросами)"""
     question_count = serializers.SerializerMethodField()
     questions = QuestionSerializer(read_only=True, many=True)
 

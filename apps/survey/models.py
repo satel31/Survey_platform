@@ -6,6 +6,7 @@ NULLABLE = {'blank': True, 'null': True}
 
 
 class Survey(models.Model):
+    """Модель опроса"""
     survey_name = models.CharField(max_length=235, verbose_name='Survey name', unique=True)
     description = models.TextField(max_length=4_096, verbose_name='Survey description', **NULLABLE)
     user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='User', **NULLABLE, related_name='surveys')
@@ -19,6 +20,7 @@ class Survey(models.Model):
 
 
 class Question(models.Model):
+    """Модель вопроса"""
     survey = models.ForeignKey(Survey, on_delete=models.CASCADE, verbose_name='Survey', related_name='questions')
     text = models.CharField(max_length=4_096, verbose_name='Text of the question')
 
@@ -31,6 +33,7 @@ class Question(models.Model):
 
 
 class Choice(models.Model):
+    """Модель варианта ответа"""
     question = models.ForeignKey(Question, on_delete=models.CASCADE, verbose_name='Question', related_name='choices')
     text = models.CharField(max_length=4_096, verbose_name='Text of the choice')
 
@@ -39,8 +42,10 @@ class Choice(models.Model):
 
 
 class Answer(models.Model):
+    """Модель ответа пользователя"""
     user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='User', **NULLABLE)
-    question = models.ForeignKey(Question, on_delete=models.CASCADE, verbose_name='Question', related_name='user_answers')
+    question = models.ForeignKey(Question, on_delete=models.CASCADE, verbose_name='Question',
+                                 related_name='user_answers')
     choice = models.ForeignKey(Choice, on_delete=models.CASCADE, verbose_name='User choice')
 
     def __str__(self):
@@ -52,6 +57,7 @@ class Answer(models.Model):
 
 
 class View(models.Model):
+    """Модель просмотра опроса"""
     user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='User', **NULLABLE, related_name='views')
     survey = models.ForeignKey(Survey, on_delete=models.CASCADE, verbose_name='Survey')
 
@@ -64,6 +70,7 @@ class View(models.Model):
 
 
 class Like(models.Model):
+    """Модель оценки опроса (лайк/дизлайк)"""
     user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='User', **NULLABLE,
                              related_name='assessments')
     survey = models.ForeignKey(Survey, on_delete=models.CASCADE, verbose_name='Survey')

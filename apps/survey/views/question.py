@@ -9,11 +9,17 @@ from apps.survey.serializers.question import QuestionSerializer, QuestionWithAns
 
 
 class QuestionCreateAPIView(generics.CreateAPIView):
+    """Создание вопроса для опроса.
+       Для создания ответа необходимо ввести pk опроса и текст вопроса.
+       Доступно только для авторизованного пользователя."""
     serializer_class = QuestionSerializer
     permission_classes = [IsAuthenticated]
 
 
 class QuestionListAPIView(generics.ListAPIView):
+    """Получение списка вопросов.
+       Есть фильтр и поиск по опросу и тексту вопроса.
+       Доступно только для авторизованных пользователей."""
     serializer_class = QuestionSerializer
     queryset = Question.objects.all()
     permission_classes = [IsAuthenticated]
@@ -23,6 +29,9 @@ class QuestionListAPIView(generics.ListAPIView):
 
 
 class QuestionDetailAPIView(generics.RetrieveAPIView):
+    """Получение конкретного вопроса по его pk.
+       При наличии у пользователя ответа на вопрос будет выведен также его ответ.
+       Доступно только для авторизованных пользователей."""
     queryset = Question.objects.all()
     serializer_class = QuestionSerializer
     permission_classes = [IsAuthenticated]
@@ -34,11 +43,15 @@ class QuestionDetailAPIView(generics.RetrieveAPIView):
 
 
 class QuestionUpdateAPIView(generics.UpdateAPIView):
+    """Обновление вопроса.
+       Доступно только для владельца ответа."""
     serializer_class = QuestionSerializer
     queryset = Question.objects.all()
     permission_classes = [IsAuthenticated, IsSurveyOwnerPermission]
 
 
 class QuestionDeleteAPIView(generics.DestroyAPIView):
+    """Удаление вопроса.
+       Доступно только для владельца вопроса."""
     queryset = Question.objects.all()
     permission_classes = [IsAuthenticated, IsSurveyOwnerPermission]

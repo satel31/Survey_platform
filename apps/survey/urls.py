@@ -7,7 +7,7 @@ from apps.survey.views.question import QuestionCreateAPIView, QuestionListAPIVie
     QuestionUpdateAPIView, QuestionDeleteAPIView
 from apps.survey.views.survey import SurveyCreateAPIView, SurveyListAPIView, SurveyDetailAPIView, SurveyUpdateAPIView, \
     SurveyDeleteAPIView
-from apps.survey.views.view import ViewCreateAPIView, ViewListAPIView, ViewUpdateAPIView, ViewDeleteAPIView
+from apps.survey.views.view import ViewCreateAPIView, ViewListAPIView, ViewDeleteAPIView
 
 app_name = 'survey'
 
@@ -37,7 +37,6 @@ urlpatterns = [
     # view
     path('add_view/', ViewCreateAPIView.as_view(), name='add_view'),
     path('views/', ViewListAPIView.as_view(), name='views'),
-    path('views/update/<int:pk>/', ViewUpdateAPIView.as_view(), name='view_update'),
     path('views/delete/<int:pk>/', ViewDeleteAPIView.as_view(), name='view_delete'),
 
     # like

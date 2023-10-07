@@ -18,7 +18,7 @@ class UserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ('first_name', 'last_name', 'email', 'city', 'avatar', 'phone', 'password')
+        fields = ('first_name', 'last_name', 'email', 'avatar', 'password', 'assessments', 'surveys', 'views',)
 
 
 class StrangerUserSerializer(serializers.ModelSerializer):
@@ -28,4 +28,4 @@ class StrangerUserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ('first_name', 'email', 'city', 'avatar', 'phone', 'telegram',)
+        fields = ('first_name', 'email', 'avatar', 'assessments', 'surveys', 'views',)

@@ -8,10 +8,10 @@ NULLABLE = {'blank': True, 'null': True}
 class Survey(models.Model):
     survey_name = models.CharField(max_length=235, verbose_name='Survey name', unique=True)
     description = models.TextField(max_length=4_096, verbose_name='Survey description', **NULLABLE)
-    owner = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='User', **NULLABLE, related_name='surveys')
+    user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='User', **NULLABLE, related_name='surveys')
 
     def __str__(self):
-        return f'{self.survey_name} by {self.owner}'
+        return f'{self.survey_name} by {self.user}'
 
     class Meta:
         verbose_name = 'survey'

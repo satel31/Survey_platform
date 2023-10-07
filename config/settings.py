@@ -47,6 +47,7 @@ THIRD_PARTY_APPS = [
     'social_django',
     'drf_social_oauth2',
     'django_filters',
+    'drf_yasg',
 ]
 
 USER_APPS = [

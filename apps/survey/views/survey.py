@@ -1,4 +1,6 @@
+from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import generics
+from rest_framework.filters import OrderingFilter
 from rest_framework.permissions import IsAuthenticated
 
 from apps.survey.models import Survey
@@ -20,6 +22,9 @@ class SurveyListAPIView(generics.ListAPIView):
     serializer_class = SurveySerializer
     queryset = Survey.objects.all()
     permission_classes = [IsAuthenticated]
+    filter_backends = [OrderingFilter, DjangoFilterBackend]
+    ordering_fields = ['survey_name', 'user']
+    filterset_fields = ('survey_name', 'user',)
 
 class SurveyDetailAPIView(generics.RetrieveAPIView):
     serializer_class = SurveySerializer

@@ -46,6 +46,7 @@ THIRD_PARTY_APPS = [
     'oauth2_provider',
     'social_django',
     'drf_social_oauth2',
+    'django_filters',
 ]
 
 USER_APPS = [
@@ -151,6 +152,9 @@ REST_FRAMEWORK = {
         'oauth2_provider.contrib.rest_framework.OAuth2Authentication',
         'drf_social_oauth2.authentication.SocialAuthentication',
     ),
+    'DEFAULT_FILTER_BACKENDS': [
+        'django_filters.rest_framework.DjangoFilterBackend',
+    ]
 }
 
 AUTHENTICATION_BACKENDS = (
@@ -158,8 +162,6 @@ AUTHENTICATION_BACKENDS = (
     'drf_social_oauth2.backends.DjangoOAuth2',
     'django.contrib.auth.backends.ModelBackend',
 )
-
-#ACTIVATE_JWT = True
 
 # Google configuration
 SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = os.getenv('app_id')

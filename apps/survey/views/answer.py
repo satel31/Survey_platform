@@ -10,9 +10,13 @@ class AnswerCreateAPIView(generics.CreateAPIView):
     serializer_class = AnswerSerializer
     permission_classes = [IsAuthenticated]
 
+    def perform_create(self, serializer):
+        new_answer = serializer.save()
+        new_answer.user = self.request.user
+        new_answer.save()
+
+
 
 class AnswerDeleteAPIView(generics.DestroyAPIView):
     permission_classes = [IsAuthenticated, IsOwnerPermission]
-
-    def get_queryset(self):
-        return Answer.objects.filter(user=self.request.user)
+    queryset = Answer.objects.all()

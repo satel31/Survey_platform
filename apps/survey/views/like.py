@@ -10,6 +10,11 @@ class LikeCreateAPIView(generics.CreateAPIView):
     serializer_class = LikeSerializer
     permission_classes = [IsAuthenticated]
 
+    def perform_create(self, serializer):
+        new_like = serializer.save()
+        new_like.user = self.request.user
+        new_like.save()
+
 
 class LikeListAPIView(generics.ListAPIView):
     serializer_class = LikeSerializer
@@ -22,13 +27,9 @@ class LikeListAPIView(generics.ListAPIView):
 class LikeUpdateAPIView(generics.UpdateAPIView):
     serializer_class = LikeSerializer
     permission_classes = [IsAuthenticated, IsOwnerPermission]
-
-    def get_queryset(self):
-        return Like.objects.filter(user=self.request.user)
+    queryset = Like.objects.all()
 
 
 class LikeDeleteAPIView(generics.DestroyAPIView):
     permission_classes = [IsAuthenticated, IsOwnerPermission]
-
-    def get_queryset(self):
-        return Like.objects.filter(user=self.request.user)
+    queryset = Like.objects.all()

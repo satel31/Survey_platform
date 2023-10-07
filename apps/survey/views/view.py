@@ -10,6 +10,11 @@ class ViewCreateAPIView(generics.CreateAPIView):
     serializer_class = ViewSerializer
     permission_classes = [IsAuthenticated]
 
+    def perform_create(self, serializer):
+        new_view = serializer.save()
+        new_view.user = self.request.user
+        new_view.save()
+
 
 class ViewListAPIView(generics.ListAPIView):
     serializer_class = ViewSerializer

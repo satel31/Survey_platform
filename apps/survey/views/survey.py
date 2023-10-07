@@ -10,6 +10,11 @@ class SurveyCreateAPIView(generics.CreateAPIView):
     serializer_class = SurveySerializer
     permission_classes = [IsAuthenticated]
 
+    def perform_create(self, serializer):
+        new_survey = serializer.save()
+        new_survey.user = self.request.user
+        new_survey.save()
+
 
 class SurveyListAPIView(generics.ListAPIView):
     serializer_class = SurveySerializer

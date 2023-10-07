@@ -4,6 +4,7 @@ from rest_framework.permissions import IsAuthenticated
 from apps.survey.models import Like
 from apps.survey.permissions import IsOwnerPermission
 from apps.survey.serializers.like import LikeSerializer
+from apps.survey.services import new_like_email
 
 
 class LikeCreateAPIView(generics.CreateAPIView):
@@ -13,6 +14,7 @@ class LikeCreateAPIView(generics.CreateAPIView):
     def perform_create(self, serializer):
         new_like = serializer.save()
         new_like.user = self.request.user
+        new_like_email(new_like.survey.user.email, new_like.survey)
         new_like.save()
 
 

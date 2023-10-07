@@ -2,10 +2,12 @@ from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import generics
 from rest_framework.filters import OrderingFilter
 from rest_framework.permissions import IsAuthenticated
+from rest_framework.views import APIView
 
 from apps.survey.models import Survey
 from apps.survey.permissions import IsOwnerPermission
 from apps.survey.serializers.survey import SurveySerializer
+from apps.survey.services import share_email, new_survey_email
 
 
 class SurveyCreateAPIView(generics.CreateAPIView):
@@ -15,6 +17,7 @@ class SurveyCreateAPIView(generics.CreateAPIView):
     def perform_create(self, serializer):
         new_survey = serializer.save()
         new_survey.user = self.request.user
+        new_survey_email(self.request.user, new_survey)
         new_survey.save()
 
 
@@ -25,6 +28,7 @@ class SurveyListAPIView(generics.ListAPIView):
     filter_backends = [OrderingFilter, DjangoFilterBackend]
     ordering_fields = ['survey_name', 'user']
     filterset_fields = ('survey_name', 'user',)
+
 
 class SurveyDetailAPIView(generics.RetrieveAPIView):
     serializer_class = SurveySerializer
@@ -37,6 +41,18 @@ class SurveyUpdateAPIView(generics.UpdateAPIView):
     queryset = Survey.objects.all()
     permission_classes = [IsAuthenticated, IsOwnerPermission]
 
+
 class SurveyDeleteAPIView(generics.DestroyAPIView):
     queryset = Survey.objects.all()
     permission_classes = [IsAuthenticated, IsOwnerPermission]
+
+
+class SurveyShare(APIView):
+    permission_classes = [IsAuthenticated, IsOwnerPermission]
+    serializer_class = SurveySerializer
+
+    def post(self, request, *args, **kwargs):
+        email_to = request.data['email']
+        survey_pk = request.data['survey']
+        survey = Survey.objects.get(pk=survey_pk)
+        share_email(email_to, request.user, survey)

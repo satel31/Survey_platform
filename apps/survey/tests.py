@@ -36,7 +36,8 @@ class SurveyTestCase(APITestCase):
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(
             response.json(),
-            [{'id': self.survey.pk, 'question_count': 0, 'questions': [], 'survey_name': 'test', 'description': None,
+            [{'id': self.survey.pk, 'question_count': 0, 'questions': [], 'likes': 0, 'survey_name': 'test',
+              'description': None,
               'user': self.user.pk}]
         )
 
@@ -49,7 +50,8 @@ class SurveyTestCase(APITestCase):
 
         self.assertEqual(
             response.json(),
-            {'id': self.survey.pk, 'question_count': 0, 'questions': [], 'survey_name': 'test', 'description': None,
+            {'id': self.survey.pk, 'question_count': 0, 'questions': [], 'likes': 0, 'survey_name': 'test',
+             'description': None,
              'user': self.user.pk}
         )
 
@@ -64,7 +66,8 @@ class SurveyTestCase(APITestCase):
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(
             response.json(),
-            {'id': self.survey.pk, 'question_count': 0, 'questions': [], 'survey_name': 'test1', 'description': None,
+            {'id': self.survey.pk, 'question_count': 0, 'questions': [], 'likes': 0, 'survey_name': 'test1',
+             'description': None,
              'user': self.user.pk}
         )
 
@@ -79,7 +82,8 @@ class SurveyTestCase(APITestCase):
 
         self.assertEqual(
             response.json(),
-            {'id': self.survey.pk, 'question_count': 0, 'questions': [], 'survey_name': 'test1', 'description': None,
+            {'id': self.survey.pk, 'question_count': 0, 'questions': [], 'likes': 0, 'survey_name': 'test1',
+             'description': None,
              'user': self.user.pk}
         )
 

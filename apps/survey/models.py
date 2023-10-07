@@ -47,6 +47,7 @@ class Answer(models.Model):
     question = models.ForeignKey(Question, on_delete=models.CASCADE, verbose_name='Question',
                                  related_name='user_answers')
     choice = models.ForeignKey(Choice, on_delete=models.CASCADE, verbose_name='User choice')
+    text = models.CharField(max_length=4_096, verbose_name='Text of the answer', **NULLABLE)
 
     def __str__(self):
         return f'User answer to question {self.question}'

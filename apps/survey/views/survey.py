@@ -32,7 +32,7 @@ class SurveyListAPIView(generics.ListAPIView):
     queryset = Survey.objects.all()
     permission_classes = [IsAuthenticated]
     filter_backends = [OrderingFilter, DjangoFilterBackend]
-    ordering_fields = ['survey_name', 'user']
+    ordering_fields = ['survey_name', 'user',]
     filterset_fields = ('survey_name', 'user',)
 
 

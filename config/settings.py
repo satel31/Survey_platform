@@ -171,3 +171,11 @@ SOCIAL_AUTH_GOOGLE_OAUTH2_SCOPE = [
     'https://www.googleapis.com/auth/userinfo.email',
     'https://www.googleapis.com/auth/userinfo.profile',
 ]
+
+# Settings for email
+EMAIL_HOST = 'smtp.yandex.ru'
+EMAIL_HOST_USER = os.getenv('email')
+EMAIL_PORT = 465
+EMAIL_HOST_PASSWORD = os.getenv('password')
+EMAIL_USE_TLS = False
+EMAIL_USE_SSL = True

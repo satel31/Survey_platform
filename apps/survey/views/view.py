@@ -7,6 +7,9 @@ from apps.survey.serializers.view import ViewSerializer
 
 
 class ViewCreateAPIView(generics.CreateAPIView):
+    """Создание просмотра.
+       Для создания просмотра необходимо ввести pk опроса.
+       Доступно только для авторизованного пользователя."""
     serializer_class = ViewSerializer
     permission_classes = [IsAuthenticated]
 
@@ -17,6 +20,8 @@ class ViewCreateAPIView(generics.CreateAPIView):
 
 
 class ViewListAPIView(generics.ListAPIView):
+    """Получение списка просмотров пользователя.
+       Доступно только для авторизованных пользователей."""
     serializer_class = ViewSerializer
     permission_classes = [IsAuthenticated]
 
@@ -25,5 +30,7 @@ class ViewListAPIView(generics.ListAPIView):
 
 
 class ViewDeleteAPIView(generics.DestroyAPIView):
+    """Удаление просмотра.
+       Доступно только для владельца просмотра."""
     queryset = View.objects.all()
     permission_classes = [IsAuthenticated, IsSurveyOwnerPermission]

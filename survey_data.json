@@ -1,0 +1,487 @@
+[
+  {
+    "model": "survey.survey",
+    "pk": 1,
+    "fields": {
+      "survey_name": "The Witcher walkthrough",
+      "description": "Walkthrough of the Witcher game",
+      "user": 2
+    }
+  },
+  {
+    "model": "survey.survey",
+    "pk": 2,
+    "fields": {
+      "survey_name": "TES walkthrough",
+      "description": "Walkthrough of The Elder Scrolls",
+      "user": 2
+    }
+  },
+  {
+    "model": "survey.survey",
+    "pk": 3,
+    "fields": {
+      "survey_name": "Popular language",
+      "description": "The popular language survey",
+      "user": 1
+    }
+  },
+  {
+    "model": "survey.question",
+    "pk": 1,
+    "fields": {
+      "survey": 1,
+      "text": "Which ending do you have?"
+    }
+  },
+  {
+    "model": "survey.question",
+    "pk": 2,
+    "fields": {
+      "survey": 1,
+      "text": "Which witch did you choose?"
+    }
+  },
+  {
+    "model": "survey.question",
+    "pk": 3,
+    "fields": {
+      "survey": 1,
+      "text": "Which side did you choose?"
+    }
+  },
+  {
+    "model": "survey.question",
+    "pk": 4,
+    "fields": {
+      "survey": 2,
+      "text": "What guild are you in?"
+    }
+  },
+  {
+    "model": "survey.question",
+    "pk": 5,
+    "fields": {
+      "survey": 2,
+      "text": "Stormcloaks or...?"
+    }
+  },
+  {
+    "model": "survey.question",
+    "pk": 6,
+    "fields": {
+      "survey": 2,
+      "text": "Which Daedra is the best?"
+    }
+  },
+  {
+    "model": "survey.question",
+    "pk": 7,
+    "fields": {
+      "survey": 3,
+      "text": "How old are you?"
+    }
+  },
+  {
+    "model": "survey.question",
+    "pk": 8,
+    "fields": {
+      "survey": 3,
+      "text": "What's your mothertongue?"
+    }
+  },
+  {
+    "model": "survey.question",
+    "pk": 9,
+    "fields": {
+      "survey": 3,
+      "text": "Which language is the best?"
+    }
+  },
+  {
+    "model": "survey.choice",
+    "pk": 1,
+    "fields": {
+      "question": 1,
+      "text": "Good. Ciri becomes a witcher."
+    }
+  },
+  {
+    "model": "survey.choice",
+    "pk": 2,
+    "fields": {
+      "question": 1,
+      "text": "Neutral. Ciri becomes Empress of Nilfgaard."
+    }
+  },
+  {
+    "model": "survey.choice",
+    "pk": 3,
+    "fields": {
+      "question": 1,
+      "text": "Bad. Ciri does not return from the world of White Frost."
+    }
+  },
+  {
+    "model": "survey.choice",
+    "pk": 4,
+    "fields": {
+      "question": 2,
+      "text": "Yennefer, of course"
+    }
+  },
+  {
+    "model": "survey.choice",
+    "pk": 5,
+    "fields": {
+      "question": 2,
+      "text": "Only Triss"
+    }
+  },
+  {
+    "model": "survey.choice",
+    "pk": 6,
+    "fields": {
+      "question": 2,
+      "text": "Shani"
+    }
+  },
+  {
+    "model": "survey.choice",
+    "pk": 7,
+    "fields": {
+      "question": 2,
+      "text": "No one"
+    }
+  },
+  {
+    "model": "survey.choice",
+    "pk": 8,
+    "fields": {
+      "question": 3,
+      "text": "Roche and Temeria"
+    }
+  },
+  {
+    "model": "survey.choice",
+    "pk": 9,
+    "fields": {
+      "question": 3,
+      "text": "Dijkstra"
+    }
+  },
+  {
+    "model": "survey.choice",
+    "pk": 10,
+    "fields": {
+      "question": 4,
+      "text": "Thieves Guild and Nightingales"
+    }
+  },
+  {
+    "model": "survey.choice",
+    "pk": 11,
+    "fields": {
+      "question": 4,
+      "text": "The Dark Brotherhood"
+    }
+  },
+  {
+    "model": "survey.choice",
+    "pk": 12,
+    "fields": {
+      "question": 4,
+      "text": "College of Winterhold"
+    }
+  },
+  {
+    "model": "survey.choice",
+    "pk": 13,
+    "fields": {
+      "question": 4,
+      "text": "All"
+    }
+  },
+  {
+    "model": "survey.choice",
+    "pk": 14,
+    "fields": {
+      "question": 5,
+      "text": "Stormcloaks"
+    }
+  },
+  {
+    "model": "survey.choice",
+    "pk": 15,
+    "fields": {
+      "question": 5,
+      "text": "Imperial Legion"
+    }
+  },
+  {
+    "model": "survey.choice",
+    "pk": 16,
+    "fields": {
+      "question": 6,
+      "text": "Azura"
+    }
+  },
+  {
+    "model": "survey.choice",
+    "pk": 17,
+    "fields": {
+      "question": 6,
+      "text": "Boethiah"
+    }
+  },
+  {
+    "model": "survey.choice",
+    "pk": 18,
+    "fields": {
+      "question": 6,
+      "text": "Sheogorath"
+    }
+  },
+  {
+    "model": "survey.choice",
+    "pk": 19,
+    "fields": {
+      "question": 7,
+      "text": "Under 18"
+    }
+  },
+  {
+    "model": "survey.choice",
+    "pk": 20,
+    "fields": {
+      "question": 7,
+      "text": "18-40"
+    }
+  },
+  {
+    "model": "survey.choice",
+    "pk": 21,
+    "fields": {
+      "question": 7,
+      "text": "Over 40"
+    }
+  },
+  {
+    "model": "survey.choice",
+    "pk": 22,
+    "fields": {
+      "question": 8,
+      "text": "Russian"
+    }
+  },
+  {
+    "model": "survey.choice",
+    "pk": 23,
+    "fields": {
+      "question": 8,
+      "text": "English"
+    }
+  },
+  {
+    "model": "survey.choice",
+    "pk": 24,
+    "fields": {
+      "question": 8,
+      "text": "Other"
+    }
+  },
+  {
+    "model": "survey.choice",
+    "pk": 25,
+    "fields": {
+      "question": 9,
+      "text": "German"
+    }
+  },
+  {
+    "model": "survey.choice",
+    "pk": 26,
+    "fields": {
+      "question": 9,
+      "text": "Russian/English"
+    }
+  },
+  {
+    "model": "survey.choice",
+    "pk": 27,
+    "fields": {
+      "question": 9,
+      "text": "Spanish"
+    }
+  },
+  {
+    "model": "survey.answer",
+    "pk": 1,
+    "fields": {
+      "user": 2,
+      "question": 1,
+      "choice": 2
+    }
+  },
+  {
+    "model": "survey.answer",
+    "pk": 2,
+    "fields": {
+      "user": 2,
+      "question": 2,
+      "choice": 4
+    }
+  },
+  {
+    "model": "survey.answer",
+    "pk": 3,
+    "fields": {
+      "user": 2,
+      "question": 3,
+      "choice": 8
+    }
+  },
+  {
+    "model": "survey.answer",
+    "pk": 4,
+    "fields": {
+      "user": 2,
+      "question": 4,
+      "choice": 13
+    }
+  },
+  {
+    "model": "survey.answer",
+    "pk": 5,
+    "fields": {
+      "user": 2,
+      "question": 5,
+      "choice": 14
+    }
+  },
+  {
+    "model": "survey.answer",
+    "pk": 6,
+    "fields": {
+      "user": 2,
+      "question": 6,
+      "choice": 16
+    }
+  },
+  {
+    "model": "survey.answer",
+    "pk": 7,
+    "fields": {
+      "user": 1,
+      "question": 4,
+      "choice": 11
+    }
+  },
+  {
+    "model": "survey.answer",
+    "pk": 8,
+    "fields": {
+      "user": 1,
+      "question": 5,
+      "choice": 15
+    }
+  },
+  {
+    "model": "survey.answer",
+    "pk": 9,
+    "fields": {
+      "user": 1,
+      "question": 6,
+      "choice": 18
+    }
+  },
+  {
+    "model": "survey.answer",
+    "pk": 10,
+    "fields": {
+      "user": 1,
+      "question": 7,
+      "choice": 20
+    }
+  },
+  {
+    "model": "survey.answer",
+    "pk": 11,
+    "fields": {
+      "user": 1,
+      "question": 8,
+      "choice": 22
+    }
+  },
+  {
+    "model": "survey.answer",
+    "pk": 12,
+    "fields": {
+      "user": 1,
+      "question": 9,
+      "choice": 26
+    }
+  },
+  {
+    "model": "survey.view",
+    "pk": 1,
+    "fields": {
+      "user": 2,
+      "survey": 1
+    }
+  },
+  {
+    "model": "survey.view",
+    "pk": 2,
+    "fields": {
+      "user": 2,
+      "survey": 2
+    }
+  },
+  {
+    "model": "survey.view",
+    "pk": 3,
+    "fields": {
+      "user": 1,
+      "survey": 2
+    }
+  },
+  {
+    "model": "survey.view",
+    "pk": 4,
+    "fields": {
+      "user": 1,
+      "survey": 3
+    }
+  },
+  {
+    "model": "survey.like",
+    "pk": 1,
+    "fields": {
+      "user": 2,
+      "survey": 1,
+      "like": true,
+      "dislike": false
+    }
+  },
+  {
+    "model": "survey.like",
+    "pk": 2,
+    "fields": {
+      "user": 1,
+      "survey": 2,
+      "like": false,
+      "dislike": true
+    }
+  },
+  {
+    "model": "survey.like",
+    "pk": 3,
+    "fields": {
+      "user": 1,
+      "survey": 3,
+      "like": true,
+      "dislike": false
+    }
+  }
+]

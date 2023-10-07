@@ -6,7 +6,7 @@ from apps.survey.views.like import LikeCreateAPIView, LikeListAPIView, LikeUpdat
 from apps.survey.views.question import QuestionCreateAPIView, QuestionListAPIView, QuestionDetailAPIView, \
     QuestionUpdateAPIView, QuestionDeleteAPIView
 from apps.survey.views.survey import SurveyCreateAPIView, SurveyListAPIView, SurveyDetailAPIView, SurveyUpdateAPIView, \
-    SurveyDeleteAPIView
+    SurveyDeleteAPIView, SurveyShare
 from apps.survey.views.view import ViewCreateAPIView, ViewListAPIView, ViewDeleteAPIView
 
 app_name = 'survey'
@@ -44,4 +44,7 @@ urlpatterns = [
     path('likes/', LikeListAPIView.as_view(), name='views'),
     path('likes/update/<int:pk>/', LikeUpdateAPIView.as_view(), name='view_update'),
     path('likes/delete/<int:pk>/', LikeDeleteAPIView.as_view(), name='view_delete'),
+
+    # share
+    path('share/', SurveyShare.as_view(), name='share'),
 ]

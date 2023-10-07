@@ -7,6 +7,9 @@ from apps.survey.serializers.answer import AnswerSerializer
 
 
 class AnswerCreateAPIView(generics.CreateAPIView):
+    """Создание ответа пользователя на вопрос опроса.
+       Для создания ответа необходимо ввести pk вопроса и pk варианта ответа.
+       Доступно только для авторизованного пользователя."""
     serializer_class = AnswerSerializer
     permission_classes = [IsAuthenticated]
 
@@ -16,7 +19,8 @@ class AnswerCreateAPIView(generics.CreateAPIView):
         new_answer.save()
 
 
-
 class AnswerDeleteAPIView(generics.DestroyAPIView):
+    """Удаление ответа пользователя на вопрос опроса.
+       Доступно только для владельца ответа."""
     permission_classes = [IsAuthenticated, IsOwnerPermission]
     queryset = Answer.objects.all()

@@ -46,6 +46,8 @@ THIRD_PARTY_APPS = [
     'oauth2_provider',
     'social_django',
     'drf_social_oauth2',
+    'django_filters',
+    'drf_yasg',
 ]
 
 USER_APPS = [
@@ -151,6 +153,9 @@ REST_FRAMEWORK = {
         'oauth2_provider.contrib.rest_framework.OAuth2Authentication',
         'drf_social_oauth2.authentication.SocialAuthentication',
     ),
+    'DEFAULT_FILTER_BACKENDS': [
+        'django_filters.rest_framework.DjangoFilterBackend',
+    ]
 }
 
 AUTHENTICATION_BACKENDS = (
@@ -158,8 +163,6 @@ AUTHENTICATION_BACKENDS = (
     'drf_social_oauth2.backends.DjangoOAuth2',
     'django.contrib.auth.backends.ModelBackend',
 )
-
-#ACTIVATE_JWT = True
 
 # Google configuration
 SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = os.getenv('app_id')
@@ -169,3 +172,11 @@ SOCIAL_AUTH_GOOGLE_OAUTH2_SCOPE = [
     'https://www.googleapis.com/auth/userinfo.email',
     'https://www.googleapis.com/auth/userinfo.profile',
 ]
+
+# Settings for email
+EMAIL_HOST = 'smtp.yandex.ru'
+EMAIL_HOST_USER = os.getenv('email')
+EMAIL_PORT = 465
+EMAIL_HOST_PASSWORD = os.getenv('password')
+EMAIL_USE_TLS = False
+EMAIL_USE_SSL = True

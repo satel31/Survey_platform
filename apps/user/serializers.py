@@ -9,6 +9,7 @@ from apps.user.models import User
 
 
 class UserSerializer(serializers.ModelSerializer):
+    """Сериализатор пользователя для владельца аккаунта со всеми оценками опросов, созданными опросами и просмотренными опросами"""
     assessments = LikeSerializer(many=True, read_only=True)
     surveys = SurveySerializer(many=True, read_only=True)
     views = ViewSerializer(many=True, read_only=True)
@@ -22,6 +23,7 @@ class UserSerializer(serializers.ModelSerializer):
 
 
 class StrangerUserSerializer(serializers.ModelSerializer):
+    """Сериализатор пользователя для других пользователей со всеми оценками опросов, созданными опросами и просмотренными опросами"""
     assessments = LikeSerializer(many=True, read_only=True)
     surveys = SurveySerializer(many=True, read_only=True)
     views = ViewSerializer(many=True, read_only=True)
